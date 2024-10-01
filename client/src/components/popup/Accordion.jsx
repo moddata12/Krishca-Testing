@@ -37,7 +37,7 @@ const MyAccordion = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          "http://localhost:3001/api/totalTimeDifference"
+          `${BackUrl}/api/totalTimeDifference`
         );
         if (!response.ok) {
           throw new Error("Network response was not ok");
