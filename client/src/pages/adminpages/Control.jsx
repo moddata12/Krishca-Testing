@@ -19,10 +19,7 @@ function Control() {
 
   useEffect(() => {
     axios
-      .get(`${BackUrl}/api/control`, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem('token')}`,
-        },
+      .get('http://16.171.15.161:3001/api/control'
       })
       .then((res) => {
         setUsers(res.data.users);
