@@ -13,7 +13,7 @@ app.use(cookieParser());
 
 app.use(
   cors({
-    origin: 'http://13.51.201.210:3001',
+    origin: 'http://127.0.0.1:3001',
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
