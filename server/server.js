@@ -19,12 +19,17 @@ process.on('unhandledRejection', (err)=>{
     })
 })
 
-process.on('uncaughtException', (err)=>{
-    console.log(`Error: ${err.message}`);
-    console.log('Shutting down the server due to uncaught exception');
-    server.close(()=>{
+process.on('uncaughtException', (err) => {
+    console.error('Uncaught Exception:', err);
+    if (server) {
+        server.close(() => {
+            console.log('Server closed due to uncaught exception.');
+            process.exit(1);
+        });
+    } else {
         process.exit(1);
-    })
-})
+    }
+});
+
 
 // console.log(a);
