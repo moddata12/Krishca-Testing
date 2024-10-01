@@ -23,11 +23,12 @@ function Card9() {
   const [meterData, setMeterData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const BackUrl = import.meta.env.VITE_BACKEND_URL;
 
   useEffect(() => {
     const fetchMeterData = async () => {
       try {
-        const response = await axios.get("http://localhost:3001/api/getCard9");
+        const response = await axios.get(`${BackUrl}/api/getCard9`);
         setMeterData(response.data);
       } catch (error) {
         console.error("Error fetching meter data:", error);
