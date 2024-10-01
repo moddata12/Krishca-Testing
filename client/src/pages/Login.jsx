@@ -15,7 +15,7 @@ function Login() {
 
   axios.defaults.withCredentials = true;
 
-  const BackUrl = import.meta.env.VITE_BACKEND_URL;
+  const BackUrl = import.meta.env.VITE_BACKEND_URL || "http://13.51.201.210:3001";
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
