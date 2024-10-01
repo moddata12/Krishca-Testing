@@ -1,17 +1,17 @@
 const express = require('express');
 const app = express();
-const errorMiddleware = require('./middlewares/error');
-const cookieParser = require('cookie-parser')
-const path = require('path')
+const cookieParser = require('cookie-parser');
+const path = require('path');
 const dotenv = require('dotenv');
-dotenv.config({path:path.join(__dirname,"config/config.env")});
+const errorMiddleware = require('./middlewares/error');
 
+dotenv.config({ path: path.join(__dirname, 'config/config.env') });
 
 app.use(express.json());
 app.use(cookieParser());
 
 const products = require('./routes/product');
-const userRoutes = require('./routes/userRoutes'); 
+const userRoutes = require('./routes/userRoutes');
 const authRoutes = require('./routes/authRoutes');
 const detailRoutes = require('./routes/detailRoutes');
 const pageRoutes = require('./routes/pageRoutes');
@@ -46,11 +46,11 @@ app.use('/api', emailRoutes);
 app.use('/api', equipmentRoutes);
 app.use('/api', logoutRoutes);
 
-if(process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../client/dist')));
   app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '../client/dist/index.html'))
-  })
+    res.sendFile(path.resolve(__dirname, '../client/dist/index.html'));
+  });
 }
 
 app.use(errorMiddleware);
