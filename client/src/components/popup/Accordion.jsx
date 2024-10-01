@@ -32,7 +32,7 @@ function millisecondsToDHMS(milliseconds) {
 
 const MyAccordion = () => {
   const [measurementData, setMeasurementData] = useState({});
-
+  const BackUrl = import.meta.env.VITE_BACKEND_URL;
   useEffect(() => {
     const fetchData = async () => {
       try {
