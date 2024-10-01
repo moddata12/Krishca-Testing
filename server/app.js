@@ -1,27 +1,14 @@
 const express = require('express');
-const cors = require("cors");
-const cookieParser = require("cookie-parser");
-const crypto = require('crypto');
 const app = express();
 const errorMiddleware = require('./middlewares/error');
+const cookieParser = require('cookie-parser')
 const path = require('path')
 const dotenv = require('dotenv');
 dotenv.config({path:path.join(__dirname,"config/config.env")});
 
+
 app.use(express.json());
 app.use(cookieParser());
-
-app.use(
-  cors({
-    origin: 'http://16.171.15.161:3001',
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true,
-  })
-);
-
-// Generate a random secret key
-const secretKey = crypto.randomBytes(64).toString('hex');
-console.log(secretKey);
 
 const products = require('./routes/product');
 const userRoutes = require('./routes/userRoutes'); 
